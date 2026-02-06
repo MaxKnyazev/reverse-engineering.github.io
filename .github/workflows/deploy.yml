@@ -34,6 +34,19 @@ jobs:
       - name: Build
         run: npm run build
       
+      - name: Verify build output
+        run: |
+          if [ ! -d "build" ]; then
+            echo "Build directory not found!"
+            exit 1
+          fi
+          if [ ! -f "build/index.html" ]; then
+            echo "build/index.html not found!"
+            exit 1
+          fi
+          echo "Build verification successful"
+          ls -la build/
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
