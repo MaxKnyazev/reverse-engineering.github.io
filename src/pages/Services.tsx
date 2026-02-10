@@ -1,4 +1,4 @@
-import { Printer, ScanLine, Cog, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 
 interface ServicesProps {
@@ -8,10 +8,9 @@ interface ServicesProps {
 export function Services({ onRequestClick }: ServicesProps) {
   const services = [
     {
-      icon: <Printer className="w-12 h-12" />,
       title: '3D-печать',
       description: 'Профессиональное изготовление деталей и прототипов',
-      image: 'https://images.unsplash.com/photo-1703221561813-cdaa308cf9e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHByaW50ZXIlMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc2ODk4MDk4OXww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://3dgu.ru/wp-content/uploads/2025/07/image-42.jpg',
       features: [
         'FDM, SLA, SLS технологии',
         'Материалы: PLA, ABS, PETG, Nylon, Resin',
@@ -21,10 +20,9 @@ export function Services({ onRequestClick }: ServicesProps) {
       ],
     },
     {
-      icon: <ScanLine className="w-12 h-12" />,
       title: '3D-сканирование',
       description: 'Высокоточное сканирование объектов любой сложности',
-      image: 'https://images.unsplash.com/photo-1694898828036-cf4d95e80e58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwM2QlMjBzY2FubmVyfGVufDF8fHx8MTc2OTA4NzE0MXww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://3dtoday.ru/upload/blog/533/533ab06ac08ccb0b339f0231577be614.png',
       features: [
         'Реверс-инжиниринг',
         'Контроль качества продукции',
@@ -34,10 +32,9 @@ export function Services({ onRequestClick }: ServicesProps) {
       ],
     },
     {
-      icon: <Cog className="w-12 h-12" />,
       title: 'Производство деталей',
       description: 'Серийное изготовление функциональных изделий',
-      image: 'https://images.unsplash.com/photo-1758873263563-5ba4aa330799?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVjaXNpb24lMjBtYW51ZmFjdHVyaW5nfGVufDF8fHx8MTc2OTA4NzE0MXww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://cvetmir3d.ru/images/obzory/3d_pechat_v_melkoseriynom_proizvodstve_2.jpg',
       features: [
         'Малые и средние серии',
         'Промышленная прочность',
@@ -69,9 +66,9 @@ export function Services({ onRequestClick }: ServicesProps) {
   return (
     <div className="pt-32 pb-20 bg-[#F8F9FA]">
       {/* Hero */}
-      <section className="bg-white py-16">
+      <section id="hero" className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-[#212121] mb-4">Наши услуги</h1>
+          <h1 className="text-[#212121] mb-4 text-7xl font-bold">Наши услуги</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Полный цикл работ от 3D-моделирования до производства готовых изделий
           </p>
@@ -79,7 +76,7 @@ export function Services({ onRequestClick }: ServicesProps) {
       </section>
 
       {/* Services */}
-      <section className="py-16">
+      <section id="services" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16">
             {services.map((service, index) => (
@@ -90,11 +87,8 @@ export function Services({ onRequestClick }: ServicesProps) {
                 }`}
               >
                 <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <div className="w-16 h-16 bg-[#D32F2F] bg-opacity-10 rounded-xl flex items-center justify-center text-[#D32F2F] mb-6">
-                    {service.icon}
-                  </div>
-                  <h2 className="text-[#212121] mb-4">{service.title}</h2>
-                  <p className="text-gray-600 mb-6 text-lg">{service.description}</p>
+                  <h2 className="text-[#212121] mb-4 text-3xl font-semibold">{service.title}</h2>
+                  <h3 className="text-[#212121] mb-6 text-2xl font-medium">{service.description}</h3>
 
                   <ul className="space-y-3 mb-8">
                     {service.features.map((feature, i) => (
@@ -129,7 +123,7 @@ export function Services({ onRequestClick }: ServicesProps) {
       </section>
 
       {/* Technologies */}
-      <section className="py-16 bg-white">
+      <section id="technologies" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-[#212121] mb-12">Технологии 3D-печати</h2>
 
@@ -155,7 +149,7 @@ export function Services({ onRequestClick }: ServicesProps) {
       </section>
 
       {/* CTA */}
-      <section className="py-16">
+      <section id="consultation" className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] rounded-2xl p-12 text-center text-white">
             <h2 className="mb-4">Нужна консультация?</h2>

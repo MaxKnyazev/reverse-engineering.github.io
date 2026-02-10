@@ -15,18 +15,61 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<string | undefined>();
 
-  // Smooth scroll to top on page change
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentPage]);
-
   const handleRequestClick = (productName?: string) => {
     setSelectedProduct(productName);
     setModalOpen(true);
   };
 
-  const handleNavigate = (page: string) => {
-    setCurrentPage(page);
+  const handleNavigate = (page: string, sectionId?: string) => {
+    const isSamePage = currentPage === page;
+    
+    // Если указан sectionId, скроллим к разделу
+    if (sectionId) {
+      if (isSamePage) {
+        // Если уже на этой странице, сразу скроллим к разделу
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const headerHeight = 80; // Высота header
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 50);
+      } else {
+        // Если на другой странице, сначала переходим, потом скроллим
+        setCurrentPage(page);
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const headerHeight = 80;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 150);
+      }
+    } else {
+      // Если sectionId не указан, переходим на страницу и скроллим к началу
+      setCurrentPage(page);
+      if (isSamePage) {
+        // Если уже на этой странице, скроллим к началу
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        // Если на другой странице, скролл произойдет после рендера
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 100);
+      }
+    }
   };
 
   const renderPage = () => {

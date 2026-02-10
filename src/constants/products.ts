@@ -17,7 +17,7 @@ export const allProducts: Product[] = [
     name: 'Промышленный 3D-принтер Pro X500',
     price: '450 000 ₽',
     priceValue: 450000,
-    image: 'https://1-office.ru/upload/iblock/9da/9dac9734e693fd1b771183a31c42d353.jpg',
+    image: 'https://ir.ozone.ru/s3/multimedia-0/6017791524.jpg',
     category: 'printers',
     description:
       'Профессиональный FDM-принтер с рабочей областью 500x500x500 мм. Поддержка различных материалов, автокалибровка стола.',
@@ -27,7 +27,7 @@ export const allProducts: Product[] = [
     name: '3D-принтер Desktop Mini',
     price: '85 000 ₽',
     priceValue: 85000,
-    image: 'https://s.alicdn.com/@img/imgextra/i1/6000000007690/O1CN01MficSS26g4SCLgvE2_!!6000000007690-0-tbvideo.jpg_720x720q50.jpg',
+    image: 'https://avatars.mds.yandex.net/get-mpic/16096063/2a000001973ff9371172ccf3dec5fcfa81bd/orig',
     category: 'printers',
     description:
       'Компактный настольный 3D-принтер для малого бизнеса и образовательных учреждений. Простая настройка и обслуживание.',
@@ -37,8 +37,7 @@ export const allProducts: Product[] = [
     name: '3D-сканер Industrial Scan Pro',
     price: '320 000 ₽',
     priceValue: 320000,
-    image:
-      'https://images.unsplash.com/photo-1694898828036-cf4d95e80e58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwM2QlMjBzY2FubmVyfGVufDF8fHx8MTc2OTA4NzE0MXww&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'https://ir.ozone.ru/s3/multimedia-1/6828153265.jpg',
     category: 'scanners',
     description:
       'Высокоточное сканирование объектов для реверс-инжиниринга. Точность до 0.05 мм, программное обеспечение в комплекте.',
@@ -48,7 +47,7 @@ export const allProducts: Product[] = [
     name: 'Портативный 3D-сканер HandScan',
     price: '145 000 ₽',
     priceValue: 145000,
-    image: 'https://www.sep.ae/storage/app/products/handyscan-3d-silver-series-1.jpg',
+    image: 'https://3dvision.su/upload/iblock/3f2/14ofm55kg6yawzqct9lb9s5h8ail8mjs.jpg',
     category: 'scanners',
     description:
       'Мобильный ручной сканер для работы на объекте. Сканирование объектов любого размера с точностью до 0.1 мм.',
@@ -58,8 +57,7 @@ export const allProducts: Product[] = [
     name: 'Печать функциональных прототипов',
     price: '5 000 ₽',
     priceValue: 5000,
-    image:
-      'https://images.unsplash.com/photo-1739515054273-a2956b1e094a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHByaW50ZWQlMjBwYXJ0cyUyMHByb3RvdHlwZXxlbnwxfHx8fDE3NjkwODcxMzl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'https://printex.ru/wp-content/uploads/2025/02/image-90.jpg',
     category: '3d-products',
     description: 'Быстрое прототипирование деталей из ABS, PLA, PETG пластиков. Срок изготовления 1-2 дня.',
   },
@@ -68,8 +66,7 @@ export const allProducts: Product[] = [
     name: 'Производство серийных деталей',
     price: '3 000 ₽',
     priceValue: 3000,
-    image:
-      'https://images.unsplash.com/photo-1758873263563-5ba4aa330799?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVjaXNpb24lMjBtYW51ZmFjdHVyaW5nfGVufDF8fHx8MTc2OTA4NzE0MXww&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'https://meritogroup.ru/wp-content/uploads/2025/07/diploma.webp',
     category: '3d-products',
     description: 'Изготовление партий деталей от 10 штук. Специальные цены на крупные заказы.',
   },
@@ -78,7 +75,7 @@ export const allProducts: Product[] = [
     name: 'Филамент PLA (1 кг)',
     price: '1 800 ₽',
     priceValue: 1800,
-    image: 'https://avatars.mds.yandex.net/get-mpic/14708310/2a0000019a38fe58e06f1a3db931e29c5468/orig',
+    image: 'https://www.robo90.com/esun-pla-plus-filament-hardal-yesili-175mm-1kg-filament-esun-robo90-54414-54-B.jpg',
     category: 'materials',
     description: 'Высококачественный PLA филамент, диаметр 1.75 мм. 12 цветов в наличии.',
   },
@@ -87,8 +84,7 @@ export const allProducts: Product[] = [
     name: 'Филамент ABS Pro (1 кг)',
     price: '2 200 ₽',
     priceValue: 2200,
-    image:
-      'https://lh3.googleusercontent.com/QxwBvInKcNcFczmQ_rbaVL9hmAFzOIifLBlah2mt599p4PDKq7JQvNhN7CumVHQcwQKui6JuQ9ana3cEGfybKc0=w1200-h630-c0xffffff-rj-pc0xffffff-pd',
+    image: 'https://www.promelec.ru/fs/cache/7a/3d/08/b7/51c9a69eb58541dea26c5152.jpg',
     category: 'materials',
     description: 'Прочный ABS пластик для функциональных деталей. Высокая термостойкость.',
   },
@@ -97,8 +93,7 @@ export const allProducts: Product[] = [
     name: 'Набор режущих инструментов',
     price: '12 500 ₽',
     priceValue: 12500,
-    image:
-      'https://images.unsplash.com/photo-1758873263563-5ba4aa330799?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVjaXNpb24lMjBtYW51ZmFjdHVyaW5nfGVufDF8fHx8MTc2OTA4NzE0MXww&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'https://avatars.mds.yandex.net/get-mpic/16484647/2a00000198e52d116b55c3efefffbc11a14c/orig',
     category: 'tools',
     description:
       'Профессиональный набор для постобработки 3D-печатных изделий: ножи, надфили, шлифовальные инструменты.',

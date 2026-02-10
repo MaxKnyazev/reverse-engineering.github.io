@@ -30,8 +30,7 @@ export const heroSlides: HeroSlide[] = [
     title: '3D-печать и оборудование для вашего производства',
     description:
       'Изготовление деталей, прототипов и индивидуальных моделей. Продажа промышленных 3D-принтеров, сканеров и расходных материалов.',
-    image:
-      'https://images.unsplash.com/photo-1736666835308-27fa97a0d660?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHByaW50aW5nJTIwdGVjaG5vbG9neSUyMGVxdWlwbWVudHxlbnwxfHx8fDE3NzAzNjA2NDh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://3dgu.ru/wp-content/uploads/2025/07/image-42.jpg',
     page: 'home',
     buttonText: 'Главная',
   },
@@ -39,8 +38,7 @@ export const heroSlides: HeroSlide[] = [
     title: 'Широкий выбор оборудования и материалов',
     description:
       'Промышленные 3D-принтеры, сканеры, филаменты и расходные материалы. Гарантия качества и профессиональная поддержка.',
-    image:
-      'https://images.unsplash.com/photo-1660145010706-f6e1e54758de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwY2F0YWxvZyUyMHByb2R1Y3RzJTIwc2hvd2Nhc2V8ZW58MXx8fHwxNzcwMzYwNjQ5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://www.richconn-cnc.com/wp-content/uploads/2024/08/image.jpeg',
     page: 'catalog',
     buttonText: 'Каталог товаров',
   },
@@ -48,8 +46,7 @@ export const heroSlides: HeroSlide[] = [
     title: 'Профессиональные услуги 3D-печати',
     description:
       'Быстрое прототипирование, серийное производство деталей, 3D-сканирование и реверс-инжиниринг. Высокая точность и короткие сроки.',
-    image:
-      'https://images.unsplash.com/photo-1769779395658-8bca02f9564e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBzZXJ2aWNlcyUyMGVuZ2luZWVyaW5nfGVufDF8fHx8MTc3MDM2MDY0OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://static.tildacdn.com/tild3565-3633-4831-b266-373066376163/image-201.jpg',
     page: 'services',
     buttonText: 'Наши услуги',
   },
@@ -57,8 +54,7 @@ export const heroSlides: HeroSlide[] = [
     title: 'О компании REVERSE-ENGINEERING',
     description:
       'Опытная команда инженеров, современное оборудование и индивидуальный подход к каждому проекту. Доверьте нам ваши задачи.',
-    image:
-      'https://images.unsplash.com/photo-1758518729685-f88df7890776?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjB0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwxfHx8fDE3NzAyODE2Njd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://cdn.shopify.com/s/files/1/0765/4369/files/Concept-Green-LC-Magna-Optimised_2x_744a950b-bee5-4daf-9da6-8e94a162a690.jpg?10179',
     page: 'about',
     buttonText: 'О компании',
   },
@@ -66,8 +62,7 @@ export const heroSlides: HeroSlide[] = [
     title: 'Блог о 3D-технологиях',
     description:
       'Последние новости индустрии, обзоры оборудования, кейсы наших проектов и полезные советы по работе с 3D-печатью.',
-    image:
-      'https://images.unsplash.com/photo-1516263497941-cfa23ccbf9bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwYmxvZyUyMHdyaXRpbmd8ZW58MXx8fHwxNzcwMjg1NzY1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://lh7-us.googleusercontent.com/VUW_LDQ6LM00Ca1Tyo4ozZFrFgzIJao7dNmCk2pNpuk1nv0fuz4UFjfmzOQ8LzQ39WGGXRgDKjG9SghxmFsAq7X4AlOF7ojU9mJTRdaqDH1Udk-DNFl2C2so_PtV0P0GPnEQHSIomWfMwDcHxWyHsRg',
     page: 'blog',
     buttonText: 'Читать блог',
   },
@@ -75,8 +70,7 @@ export const heroSlides: HeroSlide[] = [
     title: 'Часто задаваемые вопросы',
     description:
       'Ответы на популярные вопросы о 3D-печати, оборудовании, материалах и услугах. Найдите полезную информацию или задайте свой вопрос.',
-    image:
-      'https://images.unsplash.com/photo-1652077859695-de2851a95620?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWxwJTIwc3VwcG9ydCUyMHF1ZXN0aW9ucyUyMGFuc3dlcnN8ZW58MXx8fHwxNzcwMzYwNjUzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://avatars.mds.yandex.net/i?id=c396655128040abff30efefb1992a75e_l-12421159-images-thumbs&n=13',
     page: 'faq',
     buttonText: 'FAQ',
   },
@@ -84,8 +78,7 @@ export const heroSlides: HeroSlide[] = [
     title: 'Свяжитесь с нами',
     description:
       'Оставьте заявку, позвоните или приезжайте в наш офис. Мы ответим на все вопросы и поможем реализовать ваш проект.',
-    image:
-      'https://images.unsplash.com/photo-1758519288954-4e4f55e4701e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNvbnRhY3QlMjBjb21tdW5pY2F0aW9ufGVufDF8fHx8MTc3MDM2MDY1MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: 'https://avatars.mds.yandex.net/i?id=1e9cc289dba6afdbfc80e80843d3b55d_l-12500642-images-thumbs&n=13',
     page: 'contact',
     buttonText: 'Контакты',
   },

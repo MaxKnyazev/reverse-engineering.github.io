@@ -1,11 +1,9 @@
-import { HelpCircle } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../components/ui/accordion";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
 interface FAQProps {
   onRequestClick?: () => void;
@@ -141,45 +139,19 @@ export function FAQ({ onRequestClick }: FAQProps) {
   ];
 
   return (
-    <div>
+    <div className="pt-32 pb-20 bg-[#F8F9FA]">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-[#D32F2F] text-white pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-white blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#D32F2F] blur-3xl"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <HelpCircle className="w-12 h-12 text-[#D32F2F]" />
-                <h1 className="text-[2rem]">
-                  Часто задаваемые вопросы
-                </h1>
-              </div>
-              <p className="text-xl text-gray-200 mb-8">
-                Ответы на самые популярные вопросы о 3D-печати,
-                оборудовании и услугах REVERSE-ENGINEERING. Не нашли
-                ответ? Свяжитесь с нами!
-              </p>
-            </div>
-
-            <div className="relative">
-              <div className="aspect-square overflow-hidden shadow-2xl rounded-2xl">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1759392790299-a8874cabc000?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobmljYWwlMjBzdXBwb3J0JTIwY3VzdG9tZXIlMjBzZXJ2aWNlfGVufDF8fHx8MTc3MDI1NTE2Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Поддержка клиентов"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
+      <section id="hero" className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-[#212121] mb-4 text-7xl font-bold">Часто задаваемые вопросы</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Ответы на самые популярные вопросы о 3D-печати, оборудовании и услугах REVERSE-ENGINEERING. Не нашли ответ? Свяжитесь с нами!
+          </p>
         </div>
       </section>
 
       {/* FAQ Sections */}
-      <section className="py-20 bg-[#F8F9FA]">
+      <section id="faq-sections" className="py-20 bg-[#F8F9FA]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {faqCategories.map((category, categoryIndex) => (
             <div key={categoryIndex} className="mb-12 last:mb-0">
@@ -211,7 +183,7 @@ export function FAQ({ onRequestClick }: FAQProps) {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 bg-white">
+      <section id="contact-cta" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-[#212121] mb-6">
             Не нашли ответ на свой вопрос?
@@ -235,88 +207,6 @@ export function FAQ({ onRequestClick }: FAQProps) {
             >
               Позвонить нам
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Navigation */}
-      <section className="py-16 bg-[#F8F9FA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="text-center text-[#212121] mb-8">
-            Полезная информация
-          </h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-[#D32F2F] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg
-                  className="w-6 h-6 text-[#D32F2F]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                </svg>
-              </div>
-              <h4 className="text-[#212121] mb-2">
-                База знаний
-              </h4>
-              <p className="text-sm text-gray-600">
-                Статьи и руководства по 3D-технологиям
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-[#D32F2F] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg
-                  className="w-6 h-6 text-[#D32F2F]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <h4 className="text-[#212121] mb-2">
-                Видеоуроки
-              </h4>
-              <p className="text-sm text-gray-600">
-                Обучающие материалы для работы с оборудованием
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-[#D32F2F] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg
-                  className="w-6 h-6 text-[#D32F2F]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-                  />
-                </svg>
-              </div>
-              <h4 className="text-[#212121] mb-2">
-                Техподдержка
-              </h4>
-              <p className="text-sm text-gray-600">
-                Помощь специалистов в режиме онлайн
-              </p>
-            </div>
           </div>
         </div>
       </section>

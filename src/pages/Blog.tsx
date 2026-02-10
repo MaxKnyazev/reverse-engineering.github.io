@@ -8,7 +8,7 @@ export function Blog() {
       title: 'Как выбрать 3D-принтер для малого бизнеса',
       excerpt:
         'Подробное руководство по выбору оптимального 3D-принтера для старт-апа или малого производства. Сравниваем технологии, материалы и стоимость владения.',
-      image: 'https://images.unsplash.com/photo-1703221561813-cdaa308cf9e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHByaW50ZXIlMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc2ODk4MDk4OXww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://m.media-amazon.com/images/S/aplus-media-library-service-media/792c1969-e74d-49bc-8e33-2cdb264aa6aa.__CR0,0,1464,600_PT0_SX1464_V1___.jpg',
       author: 'Алексей Иванов',
       date: '15 января 2026',
       readTime: '8 мин',
@@ -19,7 +19,7 @@ export function Blog() {
       title: 'Сравнение материалов для 3D-печати: PLA vs ABS vs PETG',
       excerpt:
         'Разбираем особенности популярных филаментов: прочность, термостойкость, область применения. Помогаем определить лучший материал для вашего проекта.',
-      image: 'https://images.unsplash.com/photo-1760446410955-86c0446b9be2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHByaW50aW5nJTIwZmlsYW1lbnQlMjBtYXRlcmlhbHN8ZW58MXx8fHwxNzY5MDg3MTQwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://3dprinteddecor.com/wp-content/uploads/2024/10/PLA-vs-ABS-vs-PETG-1.jpg',
       author: 'Мария Петрова',
       date: '10 января 2026',
       readTime: '6 мин',
@@ -30,7 +30,7 @@ export function Blog() {
       title: 'Реверс-инжиниринг: от физического объекта к CAD-модели',
       excerpt:
         'Пошаговый процесс 3D-сканирования и создания точной цифровой модели существующего изделия. Кейсы применения в производстве.',
-      image: 'https://images.unsplash.com/photo-1694898828036-cf4d95e80e58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwM2QlMjBzY2FubmVyfGVufDF8fHx8MTc2OTA4NzE0MXww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://habrastorage.org/r/w1560/getpro/habr/upload_files/b3f/fe0/20d/b3ffe020d336117f4cf25c9c30dc14bf.png',
       author: 'Дмитрий Соколов',
       date: '5 января 2026',
       readTime: '10 мин',
@@ -41,7 +41,7 @@ export function Blog() {
       title: 'Постобработка 3D-печатных деталей: лучшие практики',
       excerpt:
         'Методы улучшения качества поверхности, прочности и внешнего вида деталей после печати: шлифовка, покраска, химическая обработка.',
-      image: 'https://images.unsplash.com/photo-1739515054273-a2956b1e094a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHByaW50ZWQlMjBwYXJ0cyUyMHByb3RvdHlwZXxlbnwxfHx8fDE3NjkwODcxMzl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://avatars.mds.yandex.net/i?id=b9775fc38919a3071cc451e76c991769_l-4210399-images-thumbs&n=13',
       author: 'Мария Петрова',
       date: '28 декабря 2025',
       readTime: '7 мин',
@@ -52,7 +52,7 @@ export function Blog() {
       title: '5 ошибок при внедрении 3D-печати в производство',
       excerpt:
         'Анализируем типичные проблемы при переходе на аддитивные технологии и даем рекомендации по их избежанию. Опыт реальных проектов.',
-      image: 'https://images.unsplash.com/photo-1758873263563-5ba4aa330799?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVjaXNpb24lMjBtYW51ZmFjdHVyaW5nfGVufDF8fHx8MTc2OTA4NzE0MXww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://cvetmir3d.ru/upload/medialibrary/284/Defekty-3D-pechati-13.jpeg',
       author: 'Алексей Иванов',
       date: '20 декабря 2025',
       readTime: '9 мин',
@@ -63,7 +63,7 @@ export function Blog() {
       title: 'Будущее 3D-печати: тренды 2026 года',
       excerpt:
         'Новые материалы, технологии и области применения аддитивного производства. Прогнозы экспертов и перспективы развития индустрии.',
-      image: 'https://images.unsplash.com/photo-1768796372362-05c256e61d8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBtYW51ZmFjdHVyaW5nJTIwd29ya3NwYWNlfGVufDF8fHx8MTc2OTA4NzE0MHww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://3dgu.ru/wp-content/uploads/2025/02/image-261.jpg',
       author: 'Дмитрий Соколов',
       date: '15 декабря 2025',
       readTime: '11 мин',
@@ -76,9 +76,9 @@ export function Blog() {
   return (
     <div className="pt-32 pb-20 bg-[#F8F9FA]">
       {/* Hero */}
-      <section className="bg-white py-16">
+      <section id="hero" className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-[#212121] mb-4">Блог</h1>
+          <h1 className="text-[#212121] mb-4 text-7xl font-bold">Блог</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Полезные статьи, новости и гайды о 3D-технологиях и аддитивном производстве
           </p>
@@ -86,7 +86,7 @@ export function Blog() {
       </section>
 
       {/* Categories */}
-      <section className="py-8 bg-white border-b border-gray-200">
+      <section id="categories" className="py-8 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category, index) => (
@@ -106,7 +106,7 @@ export function Blog() {
       </section>
 
       {/* Articles */}
-      <section className="py-16">
+      <section id="articles" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.map((article) => (
@@ -165,7 +165,7 @@ export function Blog() {
       </section>
 
       {/* Newsletter */}
-      <section className="py-16">
+      <section id="newsletter" className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-2xl p-12 text-center border border-gray-200">
             <h2 className="text-[#212121] mb-4">Подписка на новости</h2>

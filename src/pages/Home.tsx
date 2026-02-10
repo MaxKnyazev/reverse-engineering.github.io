@@ -1,7 +1,7 @@
 import { Star } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { heroSlides, advantages, testimonials } from '@/constants/homeData';
 import { allProducts } from '@/constants/products';
 import { cn } from '../components/ui/utils';
@@ -13,15 +13,43 @@ interface HomeProps {
 
 export function Home({ onRequestClick, onNavigate }: HomeProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const featuredProducts = useMemo(() => {
     return allProducts.slice(0, 3);
   }, []);
 
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchEndX.current = null;
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && currentSlide < heroSlides.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    }
+    if (isRightSwipe && currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
+    }
+  };
+
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-[#1a1a1a] text-white pt-32 pb-20 overflow-hidden">
+      <section id="hero" className="relative bg-[#212121] text-white pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-10 left-10 w-64 h-64 bg-[#D32F2F] rounded-full blur-3xl"></div>
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#D32F2F] rounded-full blur-3xl"></div>
@@ -30,14 +58,19 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="relative">
             {/* Slider Content */}
-            <div className="overflow-hidden">
+            <div 
+              className="overflow-hidden py-8"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {heroSlides.map((slide, index) => (
-                  <div key={index} className="min-w-full">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center px-4">
+                  <div key={index} className="min-w-full px-4">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
                       <div>
                         <h1 className="text-[2rem] mb-6">{slide.title}</h1>
                         <p className="text-xl text-gray-200 mb-8">
@@ -59,8 +92,8 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
                         </div>
                       </div>
 
-                      <div className="relative">
-                        <div className="aspect-square rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.15)]">
+                      <div className="relative px-4">
+                        <div className="aspect-square rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.25)]">
                           <ImageWithFallback
                             src={slide.image}
                             alt={slide.title}
@@ -95,7 +128,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
       </section>
 
       {/* Advantages */}
-      <section className="py-20 bg-white">
+      <section id="advantages" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-[#212121] mb-12">
             Наши преимущества
@@ -123,7 +156,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
       </section>
 
       {/* Featured Products */}
-      <section className="py-20 bg-[#F8F9FA]">
+      <section id="products" className="py-20 bg-[#F8F9FA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
             <h2 className="text-[#212121]">
@@ -150,7 +183,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
+      <section id="testimonials" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-[#212121] mb-12">
             Отзывы клиентов
@@ -188,7 +221,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#1a1a1a] text-white">
+      <section id="cta" className="py-20 bg-[#1a1a1a] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="mb-6">Готовы начать проект?</h2>
           <p className="text-xl mb-8 text-gray-100">

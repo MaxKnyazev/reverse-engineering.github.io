@@ -1,0 +1,19 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f5f5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e5e7ea;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg6)"/>
+  <!-- Filament Spool -->
+  <circle cx="400" cy="300" r="100" fill="#555555" stroke="#333333" stroke-width="3"/>
+  <circle cx="400" cy="300" r="70" fill="none" stroke="#333333" stroke-width="2"/>
+  <line x1="400" y1="200" x2="400" y2="400" stroke="#444444" stroke-width="3"/>
+  <!-- Filament -->
+  <path d="M 400 200 Q 450 250 400 300" stroke="#d32f2f" stroke-width="4" fill="none"/>
+  <!-- Text -->
+  <text x="400" y="450" font-family="Arial" font-size="32" font-weight="bold" fill="#2d3748" text-anchor="middle">Филамент</text>
+  <text x="400" y="480" font-family="Arial" font-size="18" fill="#4a5568" text-anchor="middle">PLA / ABS</text>
+</svg>
+

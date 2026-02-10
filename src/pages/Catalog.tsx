@@ -24,7 +24,7 @@ export function Catalog({ onRequestClick }: CatalogProps) {
 
   return (
     <div className="pt-32 pb-20 bg-[#F8F9FA] min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="catalog" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-[#212121] mb-2">Каталог товаров</h1>
           <p className="text-gray-600">

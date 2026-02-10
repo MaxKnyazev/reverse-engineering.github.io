@@ -1,5 +1,5 @@
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -10,6 +10,8 @@ export function Contact() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const mapRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<any>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,42 +24,77 @@ export function Contact() {
 
   const contactInfo = [
     {
-      icon: <Phone className="w-6 h-6" />,
+      icon: <Phone className="w-6 h-6 text-white" />,
       title: 'Телефон',
       details: ['+7 (908) 136-77-33'],
     },
     {
-      icon: <Mail className="w-6 h-6" />,
+      icon: <Mail className="w-6 h-6 text-white" />,
       title: 'Email',
       details: ['info@reverse-engineering.pro'],
     },
     {
-      icon: <MapPin className="w-6 h-6" />,
+      icon: <MapPin className="w-6 h-6 text-white" />,
       title: 'Адрес',
       details: ['г. Воронеж, ул. Свободы, д. 31, помещ. 6/1', '394018, Воронежская область, Россия'],
     },
     {
-      icon: <Clock className="w-6 h-6" />,
+      icon: <Clock className="w-6 h-6 text-white" />,
       title: 'Режим работы',
       details: ['Пн-Пт: 9:00 - 19:00', 'Сб-Вс: 10:00 - 16:00'],
     },
   ];
 
-  const offices = [
-    {
-      city: 'Воронеж',
-      address: 'ул. Свободы, д. 31, помещ. 6/1',
-      phone: '+7 (908) 136-77-33',
-      isMain: true,
-    },
-  ];
+  // Инициализация Яндекс карты
+  useEffect(() => {
+    if (!mapRef.current || mapInstanceRef.current) return;
+
+    // Проверяем, загружена ли библиотека Яндекс карт
+    if (typeof window !== 'undefined' && (window as any).ymaps) {
+      const ymaps = (window as any).ymaps;
+      
+      ymaps.ready(() => {
+        if (!mapRef.current) return;
+
+        // Координаты офиса (примерные для Воронеж, ул. Свободы, д. 31)
+        const officeCoords = [51.6720, 39.1843];
+
+        mapInstanceRef.current = new ymaps.Map(mapRef.current, {
+          center: officeCoords,
+          zoom: 16,
+          controls: ['zoomControl', 'typeSelector', 'fullscreenControl'],
+        });
+
+        // Добавляем метку
+        const placemark = new ymaps.Placemark(
+          officeCoords,
+          {
+            balloonContent: 'г. Воронеж, ул. Свободы, д. 31, помещ. 6/1',
+            iconCaption: 'REVERSE-ENGINEERING',
+          },
+          {
+            preset: 'islands#redDotIcon',
+          }
+        );
+
+        mapInstanceRef.current.geoObjects.add(placemark);
+      });
+    }
+
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.destroy();
+        mapInstanceRef.current = null;
+      }
+    };
+  }, []);
 
   return (
     <div className="pt-32 pb-20 bg-[#F8F9FA]">
       {/* Hero */}
-      <section className="bg-white py-16">
+      <section id="hero" className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-[#212121] mb-4">Контакты</h1>
+          <h1 className="text-[#212121] mb-4 text-7xl font-bold">Контакты</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Свяжитесь с нами удобным способом. Мы всегда рады ответить на ваши вопросы
           </p>
@@ -65,12 +102,12 @@ export function Contact() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-16">
+      <section id="contact-info" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, index) => (
               <div key={index} className="bg-white rounded-xl p-6 border border-gray-200">
-                <div className="w-12 h-12 bg-[#D32F2F] bg-opacity-10 rounded-lg flex items-center justify-center text-[#D32F2F] mb-4">
+                <div className="w-12 h-12 bg-[#D32F2F] rounded-lg flex items-center justify-center mb-4">
                   {info.icon}
                 </div>
                 <h3 className="text-[#212121] mb-3">{info.title}</h3>
@@ -86,7 +123,7 @@ export function Contact() {
       </section>
 
       {/* Contact Form & Map */}
-      <section className="py-16">
+      <section id="form-map" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Form */}
@@ -202,59 +239,14 @@ export function Contact() {
               )}
             </div>
 
-            {/* Map Placeholder */}
+            {/* Yandex Map */}
             <div className="bg-white rounded-2xl overflow-hidden border border-gray-200">
-              <div className="aspect-square bg-gray-200 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <MapPin className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-500">Карта офиса</p>
-                  <p className="text-sm text-gray-400 mt-2">
-                    г. Воронеж, ул. Свободы, д. 31, помещ. 6/1<br />
-                    394018, Воронежская область, Россия
-                  </p>
-                </div>
-              </div>
+              <div ref={mapRef} className="aspect-square w-full" style={{ minHeight: '400px' }}></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Offices */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-[#212121] mb-12">Наши офисы</h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {offices.map((office, index) => (
-              <div
-                key={index}
-                className={`rounded-xl p-8 border-2 ${
-                  office.isMain
-                    ? 'border-[#D32F2F] bg-red-50'
-                    : 'border-gray-200 bg-white'
-                }`}
-              >
-                {office.isMain && (
-                  <div className="inline-block px-3 py-1 bg-[#D32F2F] text-white text-xs rounded-full mb-4">
-                    Головной офис
-                  </div>
-                )}
-                <h3 className="text-[#212121] mb-4">{office.city}</h3>
-                <div className="space-y-3 text-gray-600 text-sm">
-                  <div className="flex items-start gap-2">
-                    <MapPin size={16} className="mt-0.5 flex-shrink-0" />
-                    <span>{office.address}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Phone size={16} className="flex-shrink-0" />
-                    <span>{office.phone}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
