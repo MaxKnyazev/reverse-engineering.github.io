@@ -15,7 +15,6 @@ export function Catalog({ onRequestClick, initialCategory }: CatalogProps) {
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000000]);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  // Устанавливаем начальную категорию при монтировании или изменении initialCategory
   useEffect(() => {
     if (initialCategory) {
       setSelectedCategory(initialCategory);

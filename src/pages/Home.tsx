@@ -26,7 +26,6 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
     return allProducts.slice(0, 3);
   }, []);
 
-  // Отслеживаем размер экрана и измеряем максимальные высоты заголовков и описаний
   useEffect(() => {
     const checkMobile = () => {
       const mobile = window.innerWidth < 1024;
@@ -43,13 +42,11 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
         return;
       }
 
-      // Измеряем высоты заголовков
       const titleHeights = titleRefs.current
         .filter((ref) => ref !== null)
         .map((ref) => ref!.scrollHeight);
       const maxTitle = titleHeights.length > 0 ? Math.max(...titleHeights) : 0;
 
-      // Измеряем высоты описаний
       const descriptionHeights = descriptionRefs.current
         .filter((ref) => ref !== null)
         .map((ref) => ref!.scrollHeight);
@@ -59,13 +56,10 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
       setMaxDescriptionHeight(maxDescription);
     };
 
-    // Инициализация
     checkMobile();
     
-    // Небольшая задержка для того, чтобы DOM успел отрендериться
     const timeoutId = setTimeout(measureHeights, 100);
     
-    // Также измеряем при изменении размера окна
     window.addEventListener('resize', measureHeights);
 
     return () => {
@@ -74,26 +68,23 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
     };
   }, []);
 
-  // Функция для сброса таймера авто-слайда
   const resetAutoSlideTimer = useRef(() => {
     if (autoSlideTimerRef.current) {
       clearInterval(autoSlideTimerRef.current);
       autoSlideTimerRef.current = null;
     }
     
-    // Запускаем новый таймер
     autoSlideTimerRef.current = setInterval(() => {
       setCurrentSlide((prev) => {
         if (prev < heroSlides.length - 1) {
           return prev + 1;
         } else {
-          return 0; // Возвращаемся к первому слайду
+          return 0;
         }
       });
-    }, 6000); // 6 секунд
+    }, 6000);
   });
 
-  // Авто-слайд
   useEffect(() => {
     resetAutoSlideTimer.current();
     
@@ -102,7 +93,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
         clearInterval(autoSlideTimerRef.current);
       }
     };
-  }, []); // Запускаем только при монтировании
+  }, []);
 
   const minSwipeDistance = 50;
 
@@ -124,20 +115,17 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
 
     if (isLeftSwipe && currentSlide < heroSlides.length - 1) {
       setCurrentSlide(currentSlide + 1);
-      resetAutoSlideTimer.current(); // Сбрасываем таймер при свайпе
+      resetAutoSlideTimer.current();
     }
     if (isRightSwipe && currentSlide > 0) {
       setCurrentSlide(currentSlide - 1);
-      resetAutoSlideTimer.current(); // Сбрасываем таймер при свайпе
+      resetAutoSlideTimer.current();
     }
   };
 
-  // Обработчик клика для переключения слайдов на мобильной версии
   const handleSlideClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Работает только на мобильной версии
     if (window.innerWidth >= 1024) return;
     
-    // Не переключаем слайд при клике на кнопки или другие интерактивные элементы
     const target = e.target as HTMLElement;
     if (target.tagName === 'BUTTON' || target.closest('button')) {
       return;
@@ -147,15 +135,13 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
     const screenWidth = window.innerWidth;
     const middleX = screenWidth / 2;
     
-    // Если клик в правой половине экрана - переключаем вправо
     if (clickX > middleX && currentSlide < heroSlides.length - 1) {
       setCurrentSlide(currentSlide + 1);
-      resetAutoSlideTimer.current(); // Сбрасываем таймер при клике
+      resetAutoSlideTimer.current();
     }
-    // Если клик в левой половине экрана - переключаем влево
     else if (clickX < middleX && currentSlide > 0) {
       setCurrentSlide(currentSlide - 1);
-      resetAutoSlideTimer.current(); // Сбрасываем таймер при клике
+      resetAutoSlideTimer.current();
     }
   };
 
@@ -174,7 +160,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
             <div 
               className="overflow-hidden py-4"
               style={{
-                paddingTop: !isMobile ? '3rem' : undefined, // 48px увеличенный отступ на десктопе
+                paddingTop: !isMobile ? '3rem' : undefined,
                 paddingBottom: !isMobile ? '3rem' : undefined,
               }}
               onTouchStart={onTouchStart}
@@ -191,7 +177,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
                     <div 
                       className="grid lg:grid-cols-2 gap-6 items-center min-h-[500px] lg:min-h-0"
                       style={{
-                        gap: !isMobile ? '4rem' : undefined, // 64px увеличенный отступ на десктопе
+                        gap: !isMobile ? '4rem' : undefined,
                       }}
                     >
                       <div className="flex flex-col justify-center">
@@ -205,7 +191,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
                               maxTitleHeight > 0 && isMobile
                                 ? `${maxTitleHeight}px`
                                 : undefined,
-                            marginBottom: !isMobile ? '2.5rem' : undefined, // 40px увеличенный отступ на десктопе
+                            marginBottom: !isMobile ? '2.5rem' : undefined,
                           }}
                         >
                           {slide.title}
@@ -220,7 +206,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
                               maxDescriptionHeight > 0 && isMobile
                                 ? `${maxDescriptionHeight}px`
                                 : undefined,
-                            marginBottom: !isMobile ? '3rem' : undefined, // 48px увеличенный отступ на десктопе
+                            marginBottom: !isMobile ? '3rem' : undefined,
                           }}
                         >
                           {slide.description}
@@ -266,7 +252,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
                   key={index}
                   onClick={() => {
                     setCurrentSlide(index);
-                    resetAutoSlideTimer.current(); // Сбрасываем таймер при клике на точку
+                    resetAutoSlideTimer.current();
                   }}
                   className={cn(
                     'w-3 h-3 rounded-full transition-all',

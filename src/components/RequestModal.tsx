@@ -16,7 +16,6 @@ export function RequestModal({ isOpen, onClose, productName }: RequestModalProps
   });
   const [submitted, setSubmitted] = useState(false);
 
-  // Блокировка прокрутки при открытии модального окна
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';

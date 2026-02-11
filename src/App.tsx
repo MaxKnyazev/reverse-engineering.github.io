@@ -24,7 +24,6 @@ function App() {
   const handleNavigate = (page: string, sectionId?: string) => {
     const isSamePage = currentPage === page;
     
-    // Проверяем, является ли sectionId категорией каталога
     if (sectionId && sectionId.startsWith('category:')) {
       const category = sectionId.replace('category:', '');
       setCatalogCategory(category === 'all' ? undefined : category);
@@ -35,14 +34,12 @@ function App() {
       return;
     }
     
-    // Если указан sectionId, скроллим к разделу
     if (sectionId) {
       if (isSamePage) {
-        // Если уже на этой странице, сразу скроллим к разделу
         setTimeout(() => {
           const element = document.getElementById(sectionId);
           if (element) {
-            const headerHeight = 80; // Высота header
+            const headerHeight = 80;
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
             
@@ -53,7 +50,6 @@ function App() {
           }
         }, 50);
       } else {
-        // Если на другой странице, сначала переходим, потом скроллим
         setCurrentPage(page);
         setTimeout(() => {
           const element = document.getElementById(sectionId);
@@ -70,17 +66,13 @@ function App() {
         }, 150);
       }
     } else {
-      // Если sectionId не указан, переходим на страницу и скроллим к началу
       setCurrentPage(page);
-      // Сбрасываем категорию при переходе на другую страницу
       if (page !== 'catalog') {
         setCatalogCategory(undefined);
       }
       if (isSamePage) {
-        // Если уже на этой странице, скроллим к началу
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        // Если на другой странице, скролл произойдет после рендера
         setTimeout(() => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 100);

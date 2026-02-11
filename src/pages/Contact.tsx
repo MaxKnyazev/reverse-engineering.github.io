@@ -45,18 +45,15 @@ export function Contact() {
     },
   ];
 
-  // Инициализация Яндекс карты
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
-    // Проверяем, загружена ли библиотека Яндекс карт
     if (typeof window !== 'undefined' && (window as any).ymaps) {
       const ymaps = (window as any).ymaps;
       
       ymaps.ready(() => {
         if (!mapRef.current) return;
 
-        // Координаты офиса (примерные для Воронеж, ул. Свободы, д. 31)
         const officeCoords = [51.6720, 39.1843];
 
         mapInstanceRef.current = new ymaps.Map(mapRef.current, {
@@ -65,7 +62,6 @@ export function Contact() {
           controls: ['zoomControl', 'typeSelector', 'fullscreenControl'],
         });
 
-        // Добавляем метку
         const placemark = new ymaps.Placemark(
           officeCoords,
           {
