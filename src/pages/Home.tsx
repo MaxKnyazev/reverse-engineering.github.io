@@ -20,6 +20,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
   const touchEndX = useRef<number | null>(null);
   const titleRefs = useRef<(HTMLHeadingElement | null)[]>([]);
   const descriptionRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+  const autoSlideTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const featuredProducts = useMemo(() => {
     return allProducts.slice(0, 3);
@@ -73,6 +74,36 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
     };
   }, []);
 
+  // Функция для сброса таймера авто-слайда
+  const resetAutoSlideTimer = useRef(() => {
+    if (autoSlideTimerRef.current) {
+      clearInterval(autoSlideTimerRef.current);
+      autoSlideTimerRef.current = null;
+    }
+    
+    // Запускаем новый таймер
+    autoSlideTimerRef.current = setInterval(() => {
+      setCurrentSlide((prev) => {
+        if (prev < heroSlides.length - 1) {
+          return prev + 1;
+        } else {
+          return 0; // Возвращаемся к первому слайду
+        }
+      });
+    }, 6000); // 6 секунд
+  });
+
+  // Авто-слайд
+  useEffect(() => {
+    resetAutoSlideTimer.current();
+    
+    return () => {
+      if (autoSlideTimerRef.current) {
+        clearInterval(autoSlideTimerRef.current);
+      }
+    };
+  }, []); // Запускаем только при монтировании
+
   const minSwipeDistance = 50;
 
   const onTouchStart = (e: React.TouchEvent) => {
@@ -93,9 +124,38 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
 
     if (isLeftSwipe && currentSlide < heroSlides.length - 1) {
       setCurrentSlide(currentSlide + 1);
+      resetAutoSlideTimer.current(); // Сбрасываем таймер при свайпе
     }
     if (isRightSwipe && currentSlide > 0) {
       setCurrentSlide(currentSlide - 1);
+      resetAutoSlideTimer.current(); // Сбрасываем таймер при свайпе
+    }
+  };
+
+  // Обработчик клика для переключения слайдов на мобильной версии
+  const handleSlideClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Работает только на мобильной версии
+    if (window.innerWidth >= 1024) return;
+    
+    // Не переключаем слайд при клике на кнопки или другие интерактивные элементы
+    const target = e.target as HTMLElement;
+    if (target.tagName === 'BUTTON' || target.closest('button')) {
+      return;
+    }
+    
+    const clickX = e.clientX;
+    const screenWidth = window.innerWidth;
+    const middleX = screenWidth / 2;
+    
+    // Если клик в правой половине экрана - переключаем вправо
+    if (clickX > middleX && currentSlide < heroSlides.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+      resetAutoSlideTimer.current(); // Сбрасываем таймер при клике
+    }
+    // Если клик в левой половине экрана - переключаем влево
+    else if (clickX < middleX && currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
+      resetAutoSlideTimer.current(); // Сбрасываем таймер при клике
     }
   };
 
@@ -112,10 +172,15 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
           <div className="relative">
             {/* Slider Content */}
             <div 
-              className="overflow-hidden py-8"
+              className="overflow-hidden py-4"
+              style={{
+                paddingTop: !isMobile ? '3rem' : undefined, // 48px увеличенный отступ на десктопе
+                paddingBottom: !isMobile ? '3rem' : undefined,
+              }}
               onTouchStart={onTouchStart}
               onTouchMove={onTouchMove}
               onTouchEnd={onTouchEnd}
+              onClick={handleSlideClick}
             >
               <div
                 className="flex transition-transform duration-500 ease-in-out"
@@ -123,18 +188,24 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
               >
                 {heroSlides.map((slide, index) => (
                   <div key={index} className="min-w-full px-4">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[500px] lg:min-h-0">
+                    <div 
+                      className="grid lg:grid-cols-2 gap-6 items-center min-h-[500px] lg:min-h-0"
+                      style={{
+                        gap: !isMobile ? '4rem' : undefined, // 64px увеличенный отступ на десктопе
+                      }}
+                    >
                       <div className="flex flex-col justify-center">
                         <h1
                           ref={(el) => {
                             titleRefs.current[index] = el;
                           }}
-                          className="text-[2rem] mb-6 lg:min-h-0"
+                          className="text-[2rem] mb-3 lg:min-h-0"
                           style={{
                             minHeight:
                               maxTitleHeight > 0 && isMobile
                                 ? `${maxTitleHeight}px`
                                 : undefined,
+                            marginBottom: !isMobile ? '2.5rem' : undefined, // 40px увеличенный отступ на десктопе
                           }}
                         >
                           {slide.title}
@@ -143,20 +214,21 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
                           ref={(el) => {
                             descriptionRefs.current[index] = el;
                           }}
-                          className="text-xl text-gray-200 mb-8 lg:min-h-0"
+                          className="text-xl text-gray-200 mb-4 lg:min-h-0"
                           style={{
                             minHeight:
                               maxDescriptionHeight > 0 && isMobile
                                 ? `${maxDescriptionHeight}px`
                                 : undefined,
+                            marginBottom: !isMobile ? '3rem' : undefined, // 48px увеличенный отступ на десктопе
                           }}
                         >
                           {slide.description}
                         </p>
-                        <div className="flex flex-col lg:block gap-4 lg:gap-0 justify-center">
+                        <div className="flex flex-col lg:block gap-3 lg:gap-0 justify-center">
                           <button
                             onClick={() => onRequestClick()}
-                            className="w-[280px] lg:inline-block lg:w-auto mb-4 lg:mb-0 px-8 py-4 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-2xl hover:scale-105 whitespace-nowrap"
+                            className="w-[280px] lg:inline-block lg:w-auto mb-3 lg:mb-0 px-8 py-4 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-2xl hover:scale-105 whitespace-nowrap"
                             style={{
                               marginRight: !isMobile ? '20px' : undefined,
                             }}
@@ -165,7 +237,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
                           </button>
                           <button
                             onClick={() => onNavigate(slide.page)}
-                            className="w-[280px] lg:inline-block lg:w-auto mb-4 lg:mb-0 px-8 py-4 bg-white text-[#212121] rounded-lg hover:bg-gray-100 transition-all hover:shadow-2xl whitespace-nowrap"
+                            className="w-[280px] lg:inline-block lg:w-auto mb-0 px-8 py-4 bg-white text-[#212121] rounded-lg hover:bg-gray-100 transition-all hover:shadow-2xl whitespace-nowrap"
                           >
                             {slide.buttonText}
                           </button>
@@ -192,7 +264,10 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
               {heroSlides.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentSlide(index)}
+                  onClick={() => {
+                    setCurrentSlide(index);
+                    resetAutoSlideTimer.current(); // Сбрасываем таймер при клике на точку
+                  }}
                   className={cn(
                     'w-3 h-3 rounded-full transition-all',
                     index === currentSlide
