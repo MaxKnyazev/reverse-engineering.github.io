@@ -33,12 +33,16 @@ export function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-2 text-sm text-gray-400">
               {menuItems.map((item) => (
                 <li key={item.id}>
-                  <button
-                    onClick={() => onNavigate(item.id)}
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate(item.id);
+                    }}
                     className="hover:text-white transition-colors"
                   >
                     {item.label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>

@@ -203,7 +203,7 @@ export function Contact() {
 
                   <button
                     type="submit"
-                    className="w-full px-6 py-4 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-lg"
+                    className="w-full px-6 py-4 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-lg cursor-pointer"
                   >
                     Отправить сообщение
                   </button>

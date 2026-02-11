@@ -26,7 +26,7 @@ export function FilterSidebar({
       <div className="mb-6">
         <button
           onClick={() => setCategoryOpen(!categoryOpen)}
-          className="flex items-center justify-between w-full mb-4"
+          className="flex items-center justify-between w-full mb-4 cursor-pointer"
         >
           <span className="font-semibold text-[#212121]">Категория</span>
           {categoryOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -57,7 +57,7 @@ export function FilterSidebar({
       <div>
         <button
           onClick={() => setPriceOpen(!priceOpen)}
-          className="flex items-center justify-between w-full mb-4"
+          className="flex items-center justify-between w-full mb-4 cursor-pointer"
         >
           <span className="font-semibold text-[#212121]">Цена</span>
           {priceOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -86,28 +86,28 @@ export function FilterSidebar({
             <div className="space-y-2">
               <button
                 onClick={() => onPriceChange([0, 50000])}
-                className="text-sm text-gray-600 hover:text-[#D32F2F] transition-colors"
+                className="text-sm text-gray-600 hover:text-[#D32F2F] transition-colors cursor-pointer"
               >
                 До 50 000 ₽
               </button>
               <br />
               <button
                 onClick={() => onPriceChange([50000, 200000])}
-                className="text-sm text-gray-600 hover:text-[#D32F2F] transition-colors"
+                className="text-sm text-gray-600 hover:text-[#D32F2F] transition-colors cursor-pointer"
               >
                 50 000 - 200 000 ₽
               </button>
               <br />
               <button
                 onClick={() => onPriceChange([200000, 500000])}
-                className="text-sm text-gray-600 hover:text-[#D32F2F] transition-colors"
+                className="text-sm text-gray-600 hover:text-[#D32F2F] transition-colors cursor-pointer"
               >
                 200 000 - 500 000 ₽
               </button>
               <br />
               <button
                 onClick={() => onPriceChange([500000, 10000000])}
-                className="text-sm text-gray-600 hover:text-[#D32F2F] transition-colors"
+                className="text-sm text-gray-600 hover:text-[#D32F2F] transition-colors cursor-pointer"
               >
                 Более 500 000 ₽
               </button>

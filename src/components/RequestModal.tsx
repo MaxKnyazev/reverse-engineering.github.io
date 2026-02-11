@@ -62,7 +62,7 @@ export function RequestModal({ isOpen, onClose, productName }: RequestModalProps
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
         >
           <X size={24} />
         </button>
@@ -129,7 +129,7 @@ export function RequestModal({ isOpen, onClose, productName }: RequestModalProps
 
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-lg"
+                className="w-full px-6 py-3 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-lg cursor-pointer"
               >
                 Отправить заявку
               </button>

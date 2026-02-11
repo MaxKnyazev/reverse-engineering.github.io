@@ -169,6 +169,7 @@
     -webkit-text-decoration: inherit;
     -webkit-text-decoration: inherit;
     text-decoration: inherit;
+    cursor: pointer !important;
   }
 
   b, strong {
@@ -245,6 +246,10 @@
     color-scheme: light;
     background-color: #0000;
     border-radius: 0;
+  }
+
+  button {
+    cursor: pointer !important;
   }
 
   ::file-selector-button {

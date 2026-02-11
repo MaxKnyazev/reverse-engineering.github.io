@@ -63,7 +63,7 @@ export function Catalog({ onRequestClick, initialCategory }: CatalogProps) {
                 <button
                   onClick={() => setViewMode('grid')}
                   className={cn(
-                    'p-2 rounded-lg transition-colors',
+                    'p-2 rounded-lg transition-colors cursor-pointer',
                     viewMode === 'grid'
                       ? 'bg-[#D32F2F] text-white'
                       : 'bg-white text-gray-600 hover:bg-gray-100'
@@ -75,7 +75,7 @@ export function Catalog({ onRequestClick, initialCategory }: CatalogProps) {
                 <button
                   onClick={() => setViewMode('list')}
                   className={cn(
-                    'p-2 rounded-lg transition-colors',
+                    'p-2 rounded-lg transition-colors cursor-pointer',
                     viewMode === 'list'
                       ? 'bg-[#D32F2F] text-white'
                       : 'bg-white text-gray-600 hover:bg-gray-100'

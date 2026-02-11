@@ -30,9 +30,11 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div 
+          <a 
+            href="#"
             className="flex items-center gap-3 cursor-pointer"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               onNavigate('home');
               setMobileMenuOpen(false);
             }}
@@ -44,7 +46,7 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
               <div className="text-[#212121] font-bold text-lg leading-tight">REVERSE-ENGINEERING</div>
               <div className="text-[#D32F2F] text-xs tracking-wide">3D SOLUTIONS</div>
             </div>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
@@ -70,8 +72,12 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
                     }
                   }}
                 >
-              <button
-                onClick={() => onNavigate(item.id)}
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate(item.id);
+                }}
                     onMouseEnter={() => {
                       if (hasSections) {
                         if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
@@ -79,7 +85,7 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
                       }
                     }}
                 className={cn(
-                      'text-sm transition-colors flex items-center gap-1',
+                      'text-sm transition-colors flex items-center gap-1 cursor-pointer',
                   currentPage === item.id
                     ? 'text-[#D32F2F] font-semibold'
                     : 'text-[#212121] hover:text-[#D32F2F]'
@@ -94,7 +100,7 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
                         )}
                       />
                     )}
-                  </button>
+                  </a>
 
                   {/* Dropdown Menu */}
                   {hasSections && hoveredItem === item.id && (
@@ -116,17 +122,19 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
                       }}
                     >
                       {sections.map((section) => (
-                        <button
+                        <a
                           key={section.id}
+                          href="#"
                           onClick={(e) => {
+                            e.preventDefault();
                             e.stopPropagation();
                             onNavigate(item.id, section.id);
                             setHoveredItem(null);
                           }}
-                          className="block w-full text-left px-4 py-2 text-sm text-[#212121] hover:bg-gray-50 hover:text-[#D32F2F] transition-colors whitespace-nowrap"
+                          className="block w-full text-left px-4 py-2 text-sm text-[#212121] hover:bg-gray-50 hover:text-[#D32F2F] transition-colors whitespace-nowrap cursor-pointer"
                         >
                           {section.label}
-              </button>
+              </a>
             ))}
                     </div>
                   )}
@@ -138,7 +146,7 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
           {/* CTA Button */}
           <button
             onClick={onRequestClick}
-            className="hidden lg:block px-6 py-3 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-lg"
+            className="hidden lg:block px-6 py-3 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-lg cursor-pointer"
             aria-label="Оставить заявку"
           >
             Оставить заявку
@@ -147,7 +155,7 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-[#212121]"
+            className="lg:hidden p-2 text-[#212121] cursor-pointer"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -163,46 +171,60 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
 
                 return (
                   <div key={item.id}>
-                <button
-                  onClick={() => {
-                        if (hasSections) {
-                          setExpandedMobileItem(expandedMobileItem === item.id ? null : item.id);
-                        } else {
-                    onNavigate(item.id);
-                    setMobileMenuOpen(false);
-                        }
-                  }}
-                  className={cn(
-                        'w-full text-left px-4 py-2 rounded-lg transition-colors flex items-center justify-between',
-                    currentPage === item.id
-                      ? 'text-[#D32F2F] bg-red-50 font-semibold'
-                      : 'text-[#212121] hover:bg-gray-50'
-                  )}
-                >
-                  {item.label}
-                      {hasSections && (
-                        <ChevronDown
-                          className={cn(
-                            'w-4 h-4 transition-transform',
-                            expandedMobileItem === item.id && 'rotate-180'
-                          )}
-                        />
+                {hasSections ? (
+                  <button
+                    onClick={() => {
+                      setExpandedMobileItem(expandedMobileItem === item.id ? null : item.id);
+                    }}
+                    className={cn(
+                      'w-full text-left px-4 py-2 rounded-lg transition-colors flex items-center justify-between cursor-pointer',
+                      currentPage === item.id
+                        ? 'text-[#D32F2F] bg-red-50 font-semibold'
+                        : 'text-[#212121] hover:bg-gray-50'
+                    )}
+                  >
+                    {item.label}
+                    <ChevronDown
+                      className={cn(
+                        'w-4 h-4 transition-transform',
+                        expandedMobileItem === item.id && 'rotate-180'
                       )}
-                    </button>
+                    />
+                  </button>
+                ) : (
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate(item.id);
+                      setMobileMenuOpen(false);
+                    }}
+                    className={cn(
+                      'w-full text-left px-4 py-2 rounded-lg transition-colors flex items-center justify-between cursor-pointer',
+                      currentPage === item.id
+                        ? 'text-[#D32F2F] bg-red-50 font-semibold'
+                        : 'text-[#212121] hover:bg-gray-50'
+                    )}
+                  >
+                    {item.label}
+                  </a>
+                )}
                     {hasSections && expandedMobileItem === item.id && (
                       <div className="pl-4 mt-1 space-y-1">
                         {sections.map((section) => (
-                          <button
+                          <a
                             key={section.id}
-                            onClick={() => {
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
                               onNavigate(item.id, section.id);
                               setMobileMenuOpen(false);
                               setExpandedMobileItem(null);
                             }}
-                            className="w-full text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#D32F2F] rounded-lg transition-colors"
+                            className="w-full text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#D32F2F] rounded-lg transition-colors cursor-pointer"
                           >
                             {section.label}
-                </button>
+                </a>
               ))}
                       </div>
                     )}
@@ -214,7 +236,7 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
                   onRequestClick();
                   setMobileMenuOpen(false);
                 }}
-                className="mx-4 px-6 py-3 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all"
+                className="mx-4 px-6 py-3 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all cursor-pointer"
               >
                 Оставить заявку
               </button>

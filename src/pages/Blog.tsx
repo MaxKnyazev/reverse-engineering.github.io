@@ -92,7 +92,7 @@ export function Blog() {
             {categories.map((category, index) => (
               <button
                 key={index}
-                className={`px-4 py-2 rounded-lg text-sm transition-all ${
+                className={`px-4 py-2 rounded-lg text-sm transition-all cursor-pointer ${
                   index === 0
                     ? 'bg-[#D32F2F] text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -147,7 +147,7 @@ export function Blog() {
                     </div>
                   </div>
 
-                  <button className="text-[#D32F2F] text-sm font-semibold hover:text-[#B71C1C] transition-colors">
+                  <button className="text-[#D32F2F] text-sm font-semibold hover:text-[#B71C1C] transition-colors cursor-pointer">
                     Читать далее →
                   </button>
                 </div>
@@ -157,7 +157,7 @@ export function Blog() {
 
           {/* Load More */}
           <div className="text-center mt-12">
-            <button className="px-8 py-3 bg-white text-[#D32F2F] border-2 border-[#D32F2F] rounded-lg hover:bg-[#D32F2F] hover:text-white transition-all">
+            <button className="px-8 py-3 bg-white text-[#D32F2F] border-2 border-[#D32F2F] rounded-lg hover:bg-[#D32F2F] hover:text-white transition-all cursor-pointer">
               Загрузить ещё
             </button>
           </div>
@@ -179,7 +179,7 @@ export function Blog() {
                 placeholder="Ваш email"
                 className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D32F2F] focus:border-transparent"
               />
-              <button className="px-6 py-3 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-lg whitespace-nowrap">
+              <button className="px-6 py-3 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-lg whitespace-nowrap cursor-pointer">
                 Подписаться
               </button>
             </div>

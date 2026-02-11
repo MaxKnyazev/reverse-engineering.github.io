@@ -101,7 +101,7 @@ export function Services({ onRequestClick }: ServicesProps) {
 
                   <button
                     onClick={() => onRequestClick(service.title)}
-                    className="px-6 py-3 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-lg"
+                    className="px-6 py-3 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-lg cursor-pointer"
                   >
                     Заказать услугу
                   </button>
@@ -158,7 +158,7 @@ export function Services({ onRequestClick }: ServicesProps) {
             </p>
             <button
               onClick={() => onRequestClick()}
-              className="px-8 py-4 bg-white text-[#D32F2F] rounded-lg hover:bg-gray-100 transition-all hover:shadow-2xl hover:scale-105"
+              className="px-8 py-4 bg-white text-[#D32F2F] rounded-lg hover:bg-gray-100 transition-all hover:shadow-2xl hover:scale-105 cursor-pointer"
             >
               Получить консультацию
             </button>

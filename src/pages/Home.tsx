@@ -214,19 +214,23 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
                         <div className="flex flex-col lg:block gap-3 lg:gap-0 justify-center">
                           <button
                             onClick={() => onRequestClick()}
-                            className="w-[280px] lg:inline-block lg:w-auto mb-3 lg:mb-0 px-8 py-4 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-2xl hover:scale-105 whitespace-nowrap"
+                            className="w-[280px] lg:inline-block lg:w-auto mb-3 lg:mb-0 px-8 py-4 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-2xl hover:scale-105 whitespace-nowrap cursor-pointer"
                             style={{
                               marginRight: !isMobile ? '20px' : undefined,
                             }}
                           >
                             Оставить заявку
                           </button>
-                          <button
-                            onClick={() => onNavigate(slide.page)}
-                            className="w-[280px] lg:inline-block lg:w-auto mb-0 px-8 py-4 bg-white text-[#212121] rounded-lg hover:bg-gray-100 transition-all hover:shadow-2xl whitespace-nowrap"
+                          <a
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              onNavigate(slide.page);
+                            }}
+                            className="w-[280px] lg:inline-block lg:w-auto mb-0 px-8 py-4 bg-white text-[#212121] rounded-lg hover:bg-gray-100 transition-all hover:shadow-2xl whitespace-nowrap text-center cursor-pointer"
                           >
                             {slide.buttonText}
-                          </button>
+                          </a>
                         </div>
                       </div>
 
@@ -255,7 +259,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
                     resetAutoSlideTimer.current();
                   }}
                   className={cn(
-                    'w-3 h-3 rounded-full transition-all',
+                    'w-3 h-3 rounded-full transition-all cursor-pointer',
                     index === currentSlide
                       ? 'bg-[#D32F2F] w-8'
                       : 'bg-white/50 hover:bg-white/70'
@@ -303,12 +307,16 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
             <h2 className="text-[#212121]">
               Популярные товары
             </h2>
-            <button
-              onClick={() => onNavigate('catalog')}
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('catalog');
+              }}
               className="text-[#D32F2F] hover:text-[#B71C1C] transition-colors"
             >
               Смотреть все →
-            </button>
+            </a>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -371,7 +379,7 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
           </p>
           <button
             onClick={() => onRequestClick()}
-            className="px-8 py-4 bg-white text-[#D32F2F] rounded-lg hover:bg-gray-100 transition-all hover:shadow-2xl hover:scale-105"
+            className="px-8 py-4 bg-white text-[#D32F2F] rounded-lg hover:bg-gray-100 transition-all hover:shadow-2xl hover:scale-105 cursor-pointer"
           >
             Получить консультацию
           </button>
