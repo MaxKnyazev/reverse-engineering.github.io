@@ -153,16 +153,19 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
                         >
                           {slide.description}
                         </p>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-col lg:block gap-4 lg:gap-0 justify-center">
                           <button
                             onClick={() => onRequestClick()}
-                            className="px-8 py-4 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-2xl hover:scale-105"
+                            className="w-[280px] lg:inline-block lg:w-auto mb-4 lg:mb-0 px-8 py-4 bg-[#D32F2F] text-white rounded-lg hover:bg-[#B71C1C] transition-all hover:shadow-2xl hover:scale-105 whitespace-nowrap"
+                            style={{
+                              marginRight: !isMobile ? '20px' : undefined,
+                            }}
                           >
                             Оставить заявку
                           </button>
                           <button
                             onClick={() => onNavigate(slide.page)}
-                            className="px-8 py-4 bg-white text-[#212121] rounded-lg hover:bg-gray-100 transition-all hover:shadow-2xl"
+                            className="w-[280px] lg:inline-block lg:w-auto mb-4 lg:mb-0 px-8 py-4 bg-white text-[#212121] rounded-lg hover:bg-gray-100 transition-all hover:shadow-2xl whitespace-nowrap"
                           >
                             {slide.buttonText}
                           </button>

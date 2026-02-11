@@ -146,7 +146,7 @@ export function FAQ({ onRequestClick }: FAQProps) {
           <h1 className="text-[#212121] mb-4 text-7xl font-bold">Часто задаваемые вопросы</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Ответы на самые популярные вопросы о 3D-печати, оборудовании и услугах REVERSE-ENGINEERING. Не нашли ответ? Свяжитесь с нами!
-          </p>
+              </p>
         </div>
       </section>
 

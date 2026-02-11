@@ -70,22 +70,22 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
                     }
                   }}
                 >
-                  <button
-                    onClick={() => onNavigate(item.id)}
+              <button
+                onClick={() => onNavigate(item.id)}
                     onMouseEnter={() => {
                       if (hasSections) {
                         if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
                         setHoveredItem(item.id);
                       }
                     }}
-                    className={cn(
+                className={cn(
                       'text-sm transition-colors flex items-center gap-1',
-                      currentPage === item.id
-                        ? 'text-[#D32F2F] font-semibold'
-                        : 'text-[#212121] hover:text-[#D32F2F]'
-                    )}
-                  >
-                    {item.label}
+                  currentPage === item.id
+                    ? 'text-[#D32F2F] font-semibold'
+                    : 'text-[#212121] hover:text-[#D32F2F]'
+                )}
+              >
+                {item.label}
                     {hasSections && (
                       <ChevronDown
                         className={cn(
@@ -126,8 +126,8 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
                           className="block w-full text-left px-4 py-2 text-sm text-[#212121] hover:bg-gray-50 hover:text-[#D32F2F] transition-colors whitespace-nowrap"
                         >
                           {section.label}
-                        </button>
-                      ))}
+              </button>
+            ))}
                     </div>
                   )}
                 </div>
@@ -163,23 +163,23 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
 
                 return (
                   <div key={item.id}>
-                    <button
-                      onClick={() => {
+                <button
+                  onClick={() => {
                         if (hasSections) {
                           setExpandedMobileItem(expandedMobileItem === item.id ? null : item.id);
                         } else {
-                          onNavigate(item.id);
-                          setMobileMenuOpen(false);
+                    onNavigate(item.id);
+                    setMobileMenuOpen(false);
                         }
-                      }}
-                      className={cn(
+                  }}
+                  className={cn(
                         'w-full text-left px-4 py-2 rounded-lg transition-colors flex items-center justify-between',
-                        currentPage === item.id
-                          ? 'text-[#D32F2F] bg-red-50 font-semibold'
-                          : 'text-[#212121] hover:bg-gray-50'
-                      )}
-                    >
-                      {item.label}
+                    currentPage === item.id
+                      ? 'text-[#D32F2F] bg-red-50 font-semibold'
+                      : 'text-[#212121] hover:bg-gray-50'
+                  )}
+                >
+                  {item.label}
                       {hasSections && (
                         <ChevronDown
                           className={cn(
@@ -202,8 +202,8 @@ export function Header({ currentPage, onNavigate, onRequestClick }: HeaderProps)
                             className="w-full text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#D32F2F] rounded-lg transition-colors"
                           >
                             {section.label}
-                          </button>
-                        ))}
+                </button>
+              ))}
                       </div>
                     )}
                   </div>

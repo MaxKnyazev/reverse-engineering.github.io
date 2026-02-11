@@ -130,7 +130,7 @@ export function About() {
               <div key={index} className="bg-white rounded-xl p-8 text-center border border-gray-200">
                 <div className="w-16 h-16 bg-[#D32F2F] rounded-full flex items-center justify-center mx-auto mb-4">
                   <div className="text-white">
-                    {value.icon}
+                  {value.icon}
                   </div>
                 </div>
                 <h3 className="text-[#212121] mb-3">{value.title}</h3>
