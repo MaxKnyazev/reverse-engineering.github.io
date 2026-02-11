@@ -9,20 +9,22 @@ export interface PageSection {
 
 export const pageSections: Record<string, PageSection[]> = {
   home: [
-    { id: 'hero', label: 'Главный слайдер' },
     { id: 'advantages', label: 'Наши преимущества' },
     { id: 'products', label: 'Популярные товары' },
     { id: 'testimonials', label: 'Отзывы клиентов' },
     { id: 'cta', label: 'Оставить заявку' },
   ],
   catalog: [
-    { id: 'catalog', label: 'Каталог товаров' },
+    { id: 'category:all', label: 'Все товары' },
+    { id: 'category:printers', label: '3D-принтеры' },
+    { id: 'category:scanners', label: '3D-сканеры' },
+    { id: 'category:3d-products', label: '3D-изделия' },
+    { id: 'category:materials', label: 'Расходники' },
+    { id: 'category:tools', label: 'Инструменты' },
   ],
   services: [
-    { id: 'hero', label: 'О услугах' },
     { id: 'services', label: 'Наши услуги' },
     { id: 'technologies', label: 'Технологии 3D-печати' },
-    { id: 'consultation', label: 'Консультация' },
   ],
   about: [
     { id: 'hero', label: 'О компании' },
@@ -44,7 +46,6 @@ export const pageSections: Record<string, PageSection[]> = {
   ],
   contact: [
     { id: 'hero', label: 'Контакты' },
-    { id: 'contact-info', label: 'Контактная информация' },
     { id: 'form-map', label: 'Форма обратной связи и карта' },
   ],
 };

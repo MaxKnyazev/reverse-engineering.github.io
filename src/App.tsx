@@ -14,6 +14,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<string | undefined>();
+  const [catalogCategory, setCatalogCategory] = useState<string | undefined>();
 
   const handleRequestClick = (productName?: string) => {
     setSelectedProduct(productName);
@@ -22,6 +23,17 @@ function App() {
 
   const handleNavigate = (page: string, sectionId?: string) => {
     const isSamePage = currentPage === page;
+    
+    // Проверяем, является ли sectionId категорией каталога
+    if (sectionId && sectionId.startsWith('category:')) {
+      const category = sectionId.replace('category:', '');
+      setCatalogCategory(category === 'all' ? undefined : category);
+      setCurrentPage('catalog');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+      return;
+    }
     
     // Если указан sectionId, скроллим к разделу
     if (sectionId) {
@@ -60,6 +72,10 @@ function App() {
     } else {
       // Если sectionId не указан, переходим на страницу и скроллим к началу
       setCurrentPage(page);
+      // Сбрасываем категорию при переходе на другую страницу
+      if (page !== 'catalog') {
+        setCatalogCategory(undefined);
+      }
       if (isSamePage) {
         // Если уже на этой странице, скроллим к началу
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -77,7 +93,7 @@ function App() {
       case 'home':
         return <Home onRequestClick={handleRequestClick} onNavigate={handleNavigate} />;
       case 'catalog':
-        return <Catalog onRequestClick={handleRequestClick} />;
+        return <Catalog onRequestClick={handleRequestClick} initialCategory={catalogCategory} />;
       case 'services':
         return <Services onRequestClick={handleRequestClick} />;
       case 'about':

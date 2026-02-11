@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { ProductCard } from '../components/ProductCard';
 import { FilterSidebar } from '../components/FilterSidebar';
 import { Grid, List } from 'lucide-react';
@@ -7,12 +7,22 @@ import { cn } from '@/components/ui/utils';
 
 interface CatalogProps {
   onRequestClick: (productName?: string) => void;
+  initialCategory?: string;
 }
 
-export function Catalog({ onRequestClick }: CatalogProps) {
+export function Catalog({ onRequestClick, initialCategory }: CatalogProps) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000000]);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+
+  // Устанавливаем начальную категорию при монтировании или изменении initialCategory
+  useEffect(() => {
+    if (initialCategory) {
+      setSelectedCategory(initialCategory);
+    } else {
+      setSelectedCategory('all');
+    }
+  }, [initialCategory]);
 
   const filteredProducts = useMemo(() => {
     return allProducts.filter((product) => {

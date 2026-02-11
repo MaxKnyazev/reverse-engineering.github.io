@@ -1,7 +1,7 @@
 import { Star } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { heroSlides, advantages, testimonials } from '@/constants/homeData';
 import { allProducts } from '@/constants/products';
 import { cn } from '../components/ui/utils';
@@ -13,11 +13,64 @@ interface HomeProps {
 
 export function Home({ onRequestClick, onNavigate }: HomeProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [maxTitleHeight, setMaxTitleHeight] = useState<number>(0);
+  const [maxDescriptionHeight, setMaxDescriptionHeight] = useState<number>(0);
+  const [isMobile, setIsMobile] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+  const titleRefs = useRef<(HTMLHeadingElement | null)[]>([]);
+  const descriptionRefs = useRef<(HTMLParagraphElement | null)[]>([]);
 
   const featuredProducts = useMemo(() => {
     return allProducts.slice(0, 3);
+  }, []);
+
+  // Отслеживаем размер экрана и измеряем максимальные высоты заголовков и описаний
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      return mobile;
+    };
+
+    const measureHeights = () => {
+      const mobile = checkMobile();
+      
+      if (!mobile) {
+        setMaxTitleHeight(0);
+        setMaxDescriptionHeight(0);
+        return;
+      }
+
+      // Измеряем высоты заголовков
+      const titleHeights = titleRefs.current
+        .filter((ref) => ref !== null)
+        .map((ref) => ref!.scrollHeight);
+      const maxTitle = titleHeights.length > 0 ? Math.max(...titleHeights) : 0;
+
+      // Измеряем высоты описаний
+      const descriptionHeights = descriptionRefs.current
+        .filter((ref) => ref !== null)
+        .map((ref) => ref!.scrollHeight);
+      const maxDescription = descriptionHeights.length > 0 ? Math.max(...descriptionHeights) : 0;
+
+      setMaxTitleHeight(maxTitle);
+      setMaxDescriptionHeight(maxDescription);
+    };
+
+    // Инициализация
+    checkMobile();
+    
+    // Небольшая задержка для того, чтобы DOM успел отрендериться
+    const timeoutId = setTimeout(measureHeights, 100);
+    
+    // Также измеряем при изменении размера окна
+    window.addEventListener('resize', measureHeights);
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', measureHeights);
+    };
   }, []);
 
   const minSwipeDistance = 50;
@@ -70,10 +123,34 @@ export function Home({ onRequestClick, onNavigate }: HomeProps) {
               >
                 {heroSlides.map((slide, index) => (
                   <div key={index} className="min-w-full px-4">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
-                      <div>
-                        <h1 className="text-[2rem] mb-6">{slide.title}</h1>
-                        <p className="text-xl text-gray-200 mb-8">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[500px] lg:min-h-0">
+                      <div className="flex flex-col justify-center">
+                        <h1
+                          ref={(el) => {
+                            titleRefs.current[index] = el;
+                          }}
+                          className="text-[2rem] mb-6 lg:min-h-0"
+                          style={{
+                            minHeight:
+                              maxTitleHeight > 0 && isMobile
+                                ? `${maxTitleHeight}px`
+                                : undefined,
+                          }}
+                        >
+                          {slide.title}
+                        </h1>
+                        <p
+                          ref={(el) => {
+                            descriptionRefs.current[index] = el;
+                          }}
+                          className="text-xl text-gray-200 mb-8 lg:min-h-0"
+                          style={{
+                            minHeight:
+                              maxDescriptionHeight > 0 && isMobile
+                                ? `${maxDescriptionHeight}px`
+                                : undefined,
+                          }}
+                        >
                           {slide.description}
                         </p>
                         <div className="flex flex-wrap gap-4">
